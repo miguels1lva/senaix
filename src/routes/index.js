@@ -1,17 +1,9 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AppRoutes from "./app.routes";
+import AuthRoutes from "./auth.routes";
 
-import Start from '../screens/Start';
-import SignUp from '../screens/SignUp';
-import SignIn from '../screens/SignIn';
+const Routes = () => {
+    const [user] = useAuth();
+    return user ? <AppRoutes/> : <AuthRoutes/>;
+};
 
-
-const Stack = createNativeStackNavigator();
-export default function Routes(){
-    return(
-        <Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen name="Start" component={Start}/>
-            <Stack.Screen name="SignUp" component={SignUp}/>
-            <Stack.Screen name="SignIn" component={SignIn}/>
-        </Stack.Navigator>
-    )
-}
+export default Routes;
